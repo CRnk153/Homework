@@ -20,6 +20,9 @@ def text():
     text_list.append(text_global)
     return render_template('text.html', data=text_global)
 
+@app.route('/hello')
+def hello():
+    return render_template('hello.html')
 
 @app.route('/save', methods=['POST'])
 def save():
