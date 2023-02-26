@@ -1,0 +1,18 @@
+{% extends "register_layout.html" %}
+
+{% block body %}
+
+  <form action="/register/success" method="post">
+    <input name="name" autocomplete="off" placeholder="Name" type="text">
+    <select>
+      <option value="Basketball">Basketball</option>
+      <option value="Football">Football</option>
+      <option value="Сhess">Сhess</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+
+{% endblock %}
+
+{% block back %}
+{% endblock %}
