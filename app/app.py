@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 text_list = []
+REGISTRANTS = {}
 
 @app.route('/')
 def get_start():
@@ -37,8 +38,13 @@ def index():
 @app.route("/register/success", methods=["POST"])
 def register():
     name = request.form['name']
-    print(name)
+    sport = request.form['sport']
+    REGISTRANTS[name]=sport
     return render_template("register_success.html")
+
+@app.route("/register/registrants", methods=["GET"])
+def registrants():
+    return render_template("registrants.html", registrants=REGISTRANTS)
 
 @app.route("/about", methods=["GET"])
 def about():
@@ -51,5 +57,6 @@ def news():
 @app.route("/contact", methods=["GET"])
 def contact():
     return render_template("contact.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
